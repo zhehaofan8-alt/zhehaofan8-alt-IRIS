@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IRIS – Astronaut Health Monitoring</title>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light dark;--bg:#fff;--text:#212121;--mute:#5b616b;--soft:#f1f1f1;--card:#fff;--line:#d9d9d9;--red:#fc3d21;--blue:#0b3d91;--link:#0b3d91;--hero:#050a1f;
+ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a0c14;--text:#ececec;--mute:#a4abb8;--soft:#12151f;--card:#12151f;--line:#2b3040;--link:#8fb0ff}}
+html{scroll-behavior:smooth;scroll-padding-top:calc(80px + env(safe-area-inset-top,0px))}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Public Sans','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:17px;line-height:1.6}
+a{color:var(--link)}
+.w{max-width:1200px;margin:0 auto;padding:0 24px}
+.util{background:#000;color:#fff;font-size:13px}
+.util .w{display:flex;justify-content:space-between;gap:12px;padding-top:8px;padding-bottom:8px;flex-wrap:wrap}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:#000;color:#fff;border-bottom:1px solid #222}
+header .w{display:flex;align-items:center;gap:10px 28px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;margin-right:auto}
+.logo{width:64px;height:40px;flex:none;display:block}
+
+
+.brand b{font-size:26px;font-weight:600;letter-spacing:.35em}
+header nav{display:flex;gap:4px 22px;flex-wrap:wrap}
+header nav a{color:#fff;text-decoration:none;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.04em;padding:4px 0;border-bottom:3px solid transparent}
+header nav a:hover,header nav a:focus-visible{border-bottom-color:var(--red);outline:none}
+
+.hero{background:radial-gradient(ellipse at 78% 20%,#1b2a66 0,transparent 45%),radial-gradient(circle at 12% 90%,#3a1230 0,transparent 40%),var(--hero);color:#fff;padding:96px 0 88px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(#fff 1px,transparent 1.5px),radial-gradient(#fff 1px,transparent 1.5px);background-size:140px 140px,90px 90px;background-position:0 0,45px 60px;opacity:.28}
+.hero .w{position:relative}
+.kicker{color:var(--red);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:14px;margin:0 0 10px}
+.hero h1{font-size:clamp(88px,18vw,200px);line-height:.88;font-weight:900;margin:0;letter-spacing:.03em}
+.hero p.ch{font-size:clamp(20px,2.8vw,32px);font-weight:700;max-width:26ch;margin:20px 0 28px;line-height:1.25}
+.btn{display:inline-block;background:var(--red);color:#fff;text-decoration:none;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:14px 26px;border-radius:2px}
+.btn:hover,.btn:focus-visible{background:#d92f15}
+.byline{margin-top:36px;font-size:15px;color:#cfd6f5}
+.byline b{color:#fff}
+
+section{padding:72px 0}
+section.soft{background:var(--soft)}
+.label{color:var(--red);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:13px;margin:0 0 6px}
+h2{font-size:clamp(30px,4.5vw,48px);font-weight:900;line-height:1.1;margin:0 0 16px}
+h3{font-size:22px;font-weight:800;margin:0 0 10px;line-height:1.25}
+.lead{font-size:19px;color:var(--mute);max-width:68ch;margin:0 0 32px}
+.grid{display:grid;gap:24px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--blue);padding:22px}
+.card.r{border-top-color:var(--red)}
+.card p,.card ul{margin:0}
+.card ul{padding-left:1.15em}.card li{margin:6px 0}
+.card .t{font-weight:800;font-size:18px;margin:0 0 6px;display:block}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-top:32px}
+.stat{background:var(--blue);color:#fff;padding:28px}
+.stat.r{background:var(--red)}
+.stat b{display:block;font-size:72px;font-weight:900;line-height:1}
+.stat span{font-weight:700;font-size:18px}
+.chart{background:#fff;color:#111;border:1px solid var(--line);padding:20px;font-size:13px}
+.chart h4{margin:0 0 12px;text-align:center;font-size:15px;font-weight:800}
+.row{display:grid;grid-template-columns:42% 1fr 38px;gap:8px;align-items:center;margin:7px 0;font-weight:600;line-height:1.2}
+.bar{height:18px;background:#e8e8e8}.bar i{display:block;height:100%;background:var(--red)}
+.row em{font-style:normal;text-align:right;font-weight:700}
+.axis{text-align:center;margin-top:8px;font-weight:700}
+.src{font-size:14px;color:var(--mute);margin:12px 0;word-break:break-all}
+.cap{border-left:4px solid var(--red);padding:2px 0 2px 14px;color:var(--mute);font-size:15px}
+.cap b{display:block;color:var(--text)}
+.mock{background:linear-gradient(160deg,#e9e4ff,#f7f2ff);padding:18px;color:#222;font-size:13px;line-height:1.4;border:1px solid var(--line)}
+.mock .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.mock .top b{letter-spacing:.2em}.mock .top span{background:#fff;border-radius:10px;padding:2px 10px;font-size:11px}
+.steps{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:12px;text-align:center;font-size:10px}
+.steps span{background:#fff;border-radius:6px;padding:6px 1px}.steps .on{outline:2px solid #e86a4a}
+.step{background:#fff;border-radius:12px;padding:14px 16px;box-shadow:0 8px 24px rgba(80,60,160,.15)}
+.step em{color:#e86a4a;font-style:normal;font-size:10px;font-weight:800}
+.step h4{margin:2px 0 8px;font-size:18px}
+.step ol{margin:0;padding:0;list-style:none}
+.step li{display:flex;gap:8px;align-items:center;margin:6px 0}
+.step li i{flex:none;width:18px;height:18px;border-radius:50%;background:#e85a4a;color:#fff;font-style:normal;font-size:11px;display:grid;place-items:center}
+.sensor{background:#ddd;border-left:3px solid #7bc99a;border-radius:6px;padding:8px 10px;margin-top:10px;display:flex;justify-content:space-between;align-items:center}
+.sensor span{background:#7ee0a3;border-radius:6px;font-size:10px;padding:1px 8px;font-weight:800}
+.mock small{display:block;text-align:center;margin-top:10px;font-size:10px;color:#666}
+.shot{margin:0}.shot img{width:100%;height:auto;display:block;border:1px solid var(--line)}.shot figcaption{font-size:14px;color:var(--mute);margin-top:8px}
+.sub{font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:14px;color:var(--red);margin:0 0 10px}
+.note{color:var(--mute);font-size:15px;margin:0 0 24px}
+footer{background:#000;color:#cfcfcf;padding:48px 0 40px;font-size:15px}
+footer .w{display:flex;flex-wrap:wrap;gap:24px 60px;justify-content:space-between}
+footer b{color:#fff;display:block;margin-bottom:8px}
+footer a{color:#cfcfcf;display:block;text-decoration:none;margin:4px 0}
+footer a:hover{color:#fff;text-decoration:underline}
+@media (max-width:640px){section{padding:52px 0}.hero{padding:64px 0}.row{grid-template-columns:48% 1fr 34px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="util"><div class="w"><span>IRIS · NASA Hackathon project</span><span>Astronaut health guide</span></div></div>
+<header><div class="w">
+  <a class="brand" href="#top"><svg class="logo" viewBox="0 0 64 40" aria-hidden="true"><defs><linearGradient id="ring" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7a6cff"/><stop offset="1" stop-color="#ffffff"/></linearGradient></defs><path d="M9 20Q32 3 55 20Q32 37 9 20Z" fill="none" stroke="#e9e7ff" stroke-width="2.4" stroke-linejoin="round"/><circle cx="32" cy="20" r="8.5" fill="#3547d8" stroke="#a9b4ff" stroke-width="1.5"/><path d="M32 12.5L33.9 18.1L39.5 20L33.9 21.9L32 27.5L30.1 21.9L24.5 20L30.1 18.1Z" fill="#fff"/><ellipse cx="32" cy="20" rx="30" ry="9" transform="rotate(-14 32 20)" fill="none" stroke="url(#ring)" stroke-width="1.8"/><circle cx="60.5" cy="12.5" r="2.2" fill="#fff"/><path d="M47 5L47.8 7.2L50 8L47.8 8.8L47 11L46.2 8.8L44 8L46.2 7.2Z" fill="#cfd4ff"/></svg><b>IRIS</b></a>
+  <nav aria-label="Sections">
+    <a href="#problem">The Problem</a><a href="#data">NASA Data</a><a href="#collect">Collecting Data</a><a href="#interpret">Interpreting Data</a><a href="#sans">Solution</a><a href="#next">Next Steps</a>
+  </nav>
+</div></header>
+
+<main id="top">
+<div class="hero"><div class="w">
+  <p class="kicker">NASA Hackathon Challenge</p>
+  <h1>IRIS</h1>
+  <p class="ch">Creating Health Monitoring Software for Astronauts on Space Mission</p>
+  <a class="btn" href="#problem">Explore the project</a>
+  <p class="byline"><b>By:</b> Sariah Chan, Arthur Niu, Mark Fan, Sonata Chi, Jolie Dang, and Ela Shaul</p>
+</div></div>
+
+<section id="problem"><div class="w">
+  <p class="label">The Problem</p>
+  <h2>Main Problem: SANS</h2>
+  <p class="lead"><b>SANS</b> (Spaceflight-Associated Neuro-ocular Syndrome): a condition in which weightlessness causes fluid to shift toward an astronaut’s head, putting pressure on the brain + eyes.</p>
+  <div class="grid g2">
+    <div class="card"><span class="t">Can permanently damage vision</span><ul><li>Optic nerve swelling</li><li>Retinal scarring</li><li>Permanent blind spots</li></ul></div>
+    <div class="card"><span class="t">Impairs astronauts’ cognitive + physical ability</span><ul><li>Cognitive fatigue</li><li>Brain fog</li><li>Loss of fine motor skills</li></ul></div>
+    <div class="card r"><p>Results in significant performance loss and harm during spaceflight, after spaceflight, and spacewalks.</p></div>
+    <div class="card r"><p>To <b>detect</b> SANS → physical biomarkers + imaging data in the <b>eye and brain structure</b>.</p></div>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>70%</b><span>of astronauts face swelling in their eyes</span></div>
+    <div class="stat r"><b>15%</b><span>show more concerning signs of this</span></div>
+  </div>
+</div></section>
+
+<section id="data" class="soft"><div class="w">
+  <p class="label">Research</p>
+  <h2>NASA Data</h2>
+  <p class="lead">What NASA has found about SANS in long-duration crews.</p>
+  <div class="grid g2">
+    <div class="grid" style="gap:16px;align-content:start">
+      <div class="card"><span class="t">Cause</span><p>Microgravity causes fluid shifts toward the head, potentially contributing to SANS</p></div>
+      <div class="card"><span class="t">Prevalence</span><p>Approximately 70% of long-duration ISS astronauts experience at least one SANS-related ocular finding</p></div>
+      <div class="card"><span class="t">Symptoms</span><p>Optic disc swelling, retinal folds, changes in eye shape + vision impairment</p></div>
+      <div class="card"><span class="t">Health Risks</span><p>Potential long-term effects on astronauts' vision + neurological health</p></div>
+      <div class="card r"><span class="t">Medical Challenges</span><p>Limited access to advanced medical equipment + specialists during space missions makes continuous monitoring difficult</p></div>
+    </div>
+    <div>
+      <div class="chart">
+        <h4>SANS Findings in USOS Long-Duration Crew</h4>
+        <div class="row"><span>Any SANS Finding</span><div class="bar"><i style="width:70%"></i></div><em>~70</em></div>
+        <div class="row"><span>Optic Disc Edema (ΔTRT ≥ 20 µm)</span><div class="bar"><i style="width:66%"></i></div><em>~66</em></div>
+        <div class="row"><span>Optic Disc Edema (Frisen Grade ≥ 1)</span><div class="bar"><i style="width:13%"></i></div><em>~13</em></div>
+        <div class="row"><span>Chorioretinal Folds</span><div class="bar"><i style="width:21%"></i></div><em>~21</em></div>
+        <div class="row"><span>Globe Flattening (MRI)</span><div class="bar"><i style="width:21%"></i></div><em>~21</em></div>
+        <div class="row"><span>Δ Refractive Error (≥ 0.75 D)</span><div class="bar"><i style="width:14%"></i></div><em>~14</em></div>
+        <div class="axis">Percent of Crew</div>
+      </div>
+      <p class="src">Source: <a href="https://www.nasa.gov/wp-content/uploads/2024/02/ochmo-mtb-001-sans.pdf">https://www.nasa.gov/wp-content/uploads/2024/02/ochmo-mtb-001-sans.pdf</a></p>
+      <div class="cap"><b>Risk of Spaceflight Associated Neuro-ocular Syndrome (SANS)</b>Chronic weightlessness can cause bodily fluids such as blood and cerebrospinal fluid to move toward the head, which can lead to optic nerve swelling, folds in<br><small>NASA · Oct 23, 2024</small></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="collect"><div class="w">
+  <p class="label">The Solution</p>
+  <h2>Solution: Collecting Data</h2>
+  <div class="grid g2" style="margin-top:28px">
+    <div class="card"><h3>What Will We Collect?</h3>
+      <ul>
+        <li><b>Brain</b>: Brain structure + fluid levels + changes in brain volume</li>
+        <li><b>Eyes</b>: Retinal thickness + optic nerve swelling + changes in eye shape</li>
+        <li><b>Overall</b>: Whole body in general for versatility</li>
+      </ul></div>
+    <div class="card r"><h3>How Will We Collect Data?</h3>
+      <ul>
+        <li>Smart monitoring bed with MRI capabilities that is lighter than usual</li>
+        <li>The bed regularly scans + collects health measurements when astronauts are on the bed before and during spaceflight</li>
+        <li>MRI data is automatically sent to our health-monitoring website</li>
+        <li>The system continuously updates the astronaut's personalized health profile</li>
+      </ul></div>
+  </div>
+</div></section>
+
+<section id="interpret" class="soft"><div class="w">
+  <p class="label">The Solution</p>
+  <h2>Solution: Interpreting Data</h2>
+  <div class="grid g2" style="margin-top:28px;align-items:start">
+    <figure class="shot"><img src="iris-prototype.jpg" alt="IRIS prototype welcome screen: Your eyes, watched from orbit. Weightlessness shifts fluid toward your head and can cause SANS. 70 percent of long-duration astronauts show eye changes; 15 percent show more concerning signs."><figcaption>Prototype from the IRIS NASA hackathon. Not a medical device. Follow your flight surgeon's instructions.</figcaption></figure>
+    <div class="grid" style="gap:24px">
+      <div class="card"><h3>Interpreted Data</h3>
+        <ul>
+          <li><b>ONSD:</b> Optic nerve enlargement</li>
+          <li><b>Posterior Globe Flattening</b>: Changes in eye shape</li>
+          <li><b>Refractive Error:</b> Shifts toward farsightedness</li>
+          <li><b>Brain Structure:</b> Changes in brain volume + fluid + pituitary shape</li>
+        </ul></div>
+      <div class="card r"><h3>How The Data Is Interpreted</h3>
+        <ul>
+          <li>Analyze MRI scans for changes</li>
+          <li>Compare results to personal health baselines</li>
+          <li>Track changes using charts + graphs from before and during spaceflight</li>
+          <li>Use color-coded alerts for unusual results</li>
+          <li>Identify possible early signs of SANS</li>
+          <li>Share findings with astronauts and show next steps</li>
+        </ul></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="sans"><div class="w">
+  <p class="label">The Solution</p>
+  <h2>Solution for SANS</h2>
+  <p class="note">*All these data can be found on the MRI bed.</p>
+  <h3>SANS Indicators From MRI</h3>
+  <div class="grid g2" style="margin:16px 0 48px">
+    <div class="card"><p class="sub">Eyes</p>
+      <ul>
+        <li><b>Optic Nerve Sheath Diameter (ONSD):</b> more than 5.0mm to 5.5mm</li>
+        <li><b>Posterior Globe Flattening</b>: flattening or concavity at the back of the eye</li>
+        <li><b>Refractive Error</b>: positive shift of +0.50 to +1.00 diopters or more toward farsightedness over a short period</li>
+      </ul></div>
+    <div class="card"><p class="sub">Brain</p>
+      <ul>
+        <li><b>Pituitary Dome Configuration</b>: flattened, concave, or "empty" dome shape on mid-sagittal MRI views</li>
+        <li><b>Total Intracranial Volume (TIV)</b>: reduction in ventricular/sulcal CSF spaces</li>
+        <li><b>NfL (Neurofilament Light Chain)</b>: elevated concentrations in blood/CSF point to ongoing axonal/nerve cell stress + damage</li>
+        <li><b>Pulse Phase-Lock Loop (PPLL)</b>: changes in the amplitude/phase synchronization of these microscopic skull wall vibrations</li>
+      </ul></div>
+  </div>
+  <h3>Health Guidance</h3>
+  <div class="grid g4" style="margin-top:16px">
+    <div class="card r"><span class="t">Venoconstrictive Leg/Thigh Cuffs</span><p>Tight cuffs worn on the legs help trap + regulate blood + fluid movement away from the head</p></div>
+    <div class="card r"><span class="t">Vitamin &amp; One-Carbon Supplements</span><p>Higher levels of B vitamins + folate, alongside antioxidants like coenzyme Q10 (studied by the Italian Space Agency), help protect retinal + neural health</p></div>
+    <div class="card r"><span class="t">Pressurized Goggles</span><p>Specialized eyewear creates an external pressure gradient across the front of the eye to balance intraocular + intracranial pressures</p></div>
+    <div class="card r"><span class="t">Targeted Diet &amp; Hydration</span><p>Regulating sodium + fluid intake minimizes excess volume shifts</p></div>
+  </div>
+</div></section>
+
+<section id="next" class="soft"><div class="w">
+  <p class="label">What's Ahead</p>
+  <h2>Next Steps &amp; Improvements</h2>
+  <div class="grid g4" style="margin-top:28px">
+    <div class="card"><span class="t">Improve MRI accuracy</span><p>Detect smaller changes in brain structure + fluid distribution</p></div>
+    <div class="card"><span class="t">Improve space compatibility</span><p>Making the machine smaller, lighter + more energy-efficient</p></div>
+    <div class="card"><span class="t">Expand data collection</span><p>Monitor brain changes + sleep patterns → identify possible early signs of SANS</p></div>
+    <div class="card"><span class="t">Test the prototype</span><p>Testing the machine under simulated microgravity conditions to evaluate its accuracy + effectiveness</p></div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="w">
+  <div><b>IRIS</b>Astronaut health monitoring<br>NASA Hackathon project</div>
+  <div><b>Explore</b><a href="#problem">The Problem</a><a href="#data">NASA Data</a><a href="#collect">Collecting Data</a></div>
+  <div><b>&nbsp;</b><a href="#interpret">Interpreting Data</a><a href="#sans">Solution for SANS</a><a href="#next">Next Steps</a></div>
+  <div><b>Team</b>Sariah Chan, Arthur Niu, Mark Fan,<br>Sonata Chi, Jolie Dang, Ela Shaul</div>
+</div></footer>
+</body>
+</html>
