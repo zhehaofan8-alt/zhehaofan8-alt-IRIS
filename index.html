@@ -81,6 +81,7 @@ h3{font-size:22px;font-weight:800;margin:0 0 10px;line-height:1.25}
 .sensor span{background:#7ee0a3;border-radius:6px;font-size:10px;padding:1px 8px;font-weight:800}
 .mock small{display:block;text-align:center;margin-top:10px;font-size:10px;color:#666}
 .shot{margin:0}.shot img{width:100%;height:auto;display:block;border:1px solid var(--line)}.shot figcaption{font-size:14px;color:var(--mute);margin-top:8px}
+.flow{margin:0 auto;max-width:560px}.flow img{width:100%;height:auto;display:block;border:1px solid var(--line)}
 .sub{font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:14px;color:var(--red);margin:0 0 10px}
 .note{color:var(--mute);font-size:15px;margin:0 0 24px}
 footer{background:#000;color:#cfcfcf;padding:48px 0 40px;font-size:15px}
@@ -98,7 +99,7 @@ footer a:hover{color:#fff;text-decoration:underline}
 <header><div class="w">
   <a class="brand" href="#top"><svg class="logo" viewBox="0 0 64 40" aria-hidden="true"><defs><linearGradient id="ring" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7a6cff"/><stop offset="1" stop-color="#ffffff"/></linearGradient></defs><path d="M9 20Q32 3 55 20Q32 37 9 20Z" fill="none" stroke="#e9e7ff" stroke-width="2.4" stroke-linejoin="round"/><circle cx="32" cy="20" r="8.5" fill="#3547d8" stroke="#a9b4ff" stroke-width="1.5"/><path d="M32 12.5L33.9 18.1L39.5 20L33.9 21.9L32 27.5L30.1 21.9L24.5 20L30.1 18.1Z" fill="#fff"/><ellipse cx="32" cy="20" rx="30" ry="9" transform="rotate(-14 32 20)" fill="none" stroke="url(#ring)" stroke-width="1.8"/><circle cx="60.5" cy="12.5" r="2.2" fill="#fff"/><path d="M47 5L47.8 7.2L50 8L47.8 8.8L47 11L46.2 8.8L44 8L46.2 7.2Z" fill="#cfd4ff"/></svg><b>IRIS</b></a>
   <nav aria-label="Sections">
-    <a href="#problem">The Problem</a><a href="#data">NASA Data</a><a href="#collect">Collecting Data</a><a href="#interpret">Interpreting Data</a><a href="#sans">Solution</a><a href="#next">Next Steps</a>
+    <a href="#problem">The Problem</a><a href="#data">NASA Data</a><a href="#how">How It Works</a><a href="#collect">Collecting Data</a><a href="#interpret">Interpreting Data</a><a href="#sans">Solution</a><a href="#next">Next Steps</a>
   </nav>
 </div></header>
 
@@ -156,7 +157,14 @@ footer a:hover{color:#fff;text-decoration:underline}
   </div>
 </div></section>
 
-<section id="collect"><div class="w">
+<section id="how"><div class="w">
+  <p class="label">The Solution</p>
+  <h2>How IRIS Works</h2>
+  <p class="lead">The full IRIS flow, from opening the app to daily tracking, repeated every day of the mission.</p>
+  <figure class="flow"><img src="iris-how-it-works.jpg" alt="IRIS system flow: 1 Astronaut opens IRIS and connects to their assigned smart-monitoring bed. 2 Bed setup and positioning with adjustable supports and restraints. 3 Health data collection: MRI for brain imaging, OCT and ultrasound for eye imaging, and integrated sensors for heart rate, respiration and other measurements. 4 Data transfer: the bed's onboard computer processes and securely transfers measurements to the IRIS app through the spacecraft's internal network. 5 IRIS data analysis: software compares results with the astronaut's baseline and previous scans and flags potential SANS-related changes. 6 Results and care screen: understandable results, recommended follow-up actions and personalized countermeasure guidance. 7 Track and update: completed care activities are tracked and the profile and health history are updated for the next daily scan. Repeat daily for continuous health tracking throughout the mission."></figure>
+</div></section>
+
+<section id="collect" class="soft"><div class="w">
   <p class="label">The Solution</p>
   <h2>Solution: Collecting Data</h2>
   <div class="grid g2" style="margin-top:28px">
@@ -176,7 +184,7 @@ footer a:hover{color:#fff;text-decoration:underline}
   </div>
 </div></section>
 
-<section id="interpret" class="soft"><div class="w">
+<section id="interpret"><div class="w">
   <p class="label">The Solution</p>
   <h2>Solution: Interpreting Data</h2>
   <div class="grid g2" style="margin-top:28px;align-items:start">
@@ -202,7 +210,7 @@ footer a:hover{color:#fff;text-decoration:underline}
   </div>
 </div></section>
 
-<section id="sans"><div class="w">
+<section id="sans" class="soft"><div class="w">
   <p class="label">The Solution</p>
   <h2>Solution for SANS</h2>
   <p class="note">*All these data can be found on the MRI bed.</p>
@@ -231,7 +239,7 @@ footer a:hover{color:#fff;text-decoration:underline}
   </div>
 </div></section>
 
-<section id="next" class="soft"><div class="w">
+<section id="next"><div class="w">
   <p class="label">What's Ahead</p>
   <h2>Next Steps &amp; Improvements</h2>
   <div class="grid g4" style="margin-top:28px">
@@ -245,7 +253,7 @@ footer a:hover{color:#fff;text-decoration:underline}
 
 <footer><div class="w">
   <div><b>IRIS</b>Astronaut health monitoring<br>NASA Hackathon project</div>
-  <div><b>Explore</b><a href="#problem">The Problem</a><a href="#data">NASA Data</a><a href="#collect">Collecting Data</a></div>
+  <div><b>Explore</b><a href="#problem">The Problem</a><a href="#data">NASA Data</a><a href="#how">How It Works</a><a href="#collect">Collecting Data</a></div>
   <div><b>&nbsp;</b><a href="#interpret">Interpreting Data</a><a href="#sans">Solution for SANS</a><a href="#next">Next Steps</a></div>
   <div><b>Team</b>Sariah Chan, Arthur Niu, Mark Fan,<br>Sonata Chi, Jolie Dang, Ela Shaul</div>
 </div></footer>
